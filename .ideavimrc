@@ -1,0 +1,92 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+let mapleader=" "
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+set which-key
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+Plug 'preservim/nerdtree'
+Plug 'easymotion/vim-easymotion'
+
+"" -- Easymotions
+map \w <Plug>(easymotion-w)
+
+"" -- NERDTree
+map <c-n> :NERDTree<CR>
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+map \r <Action>(ReformatCode)
+map \o <Action>(OptimizeImports)
+map <leader>f <Action>(GotoFile)
+map <leader>a <Action>(GotoAction)
+map <leader>q <Action>(Switcher)
+map <leader>i <Action>(ShowErrorDescription)
+map <leader>b <Action>(GotoDeclaration)
+map <leader><leader> <Action>(GotoFile)
+map <leader>rr <Action>(RenameElement)
+map <leader>RR <Action>(Refactorings.QuickListPopupAction)
+map <leader>sw <Action>(SurroundWith)
+
+
+map \b <Action>(ToggleLineBreakpoint)
+map <c-b> <Action>(ShowUsages)
+map <c-c> <Action>(GotoImplementation)
+
+
+" comment out
+map <leader>cl <Action>(CommentByLineComment)
+map <leader>cb <Action>(CommentByBlockComment)
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" zed config
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>. <Action>(ShowIntentionActions)
+map gh <Action>(ShowErrorDescription)
+map gi <Action>(GotoImplementation)
+map gt <Action>(GotoTypeDeclaration)
+map gr <Action>(FindUsages)
+map <leader><leader> <Action>(GotoFile)
+map <leader>e :NERDTree<CR>
+map <leader>t <Action>(ActivateTerminalToolWindow)
+
+" Splitting Windows
+nmap <Leader>\ :vsplit<CR>
+nmap <Leader>v :vsplit<CR>
+nmap <Leader>- :split<CR>
+nmap <Leader>h :split<CR>
+
+" Quick window navigation
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+" Hide open panels
+nmap <Leader>w :action HideAllWindows<CR>
