@@ -49,6 +49,8 @@ map <leader>rr <Action>(RenameElement)
 map <leader>RR <Action>(Refactorings.QuickListPopupAction)
 map <leader>sw <Action>(SurroundWith)
 
+" Hide open panels
+nmap <Leader>w :action HideAllWindows<CR>
 
 map \b <Action>(ToggleLineBreakpoint)
 map <c-b> <Action>(ShowUsages)
@@ -72,6 +74,9 @@ map gh <Action>(ShowErrorDescription)
 map gi <Action>(GotoImplementation)
 map gt <Action>(GotoTypeDeclaration)
 map gr <Action>(FindUsages)
+map gD <Action>(ShowUsages)
+
+" 
 map <leader><leader> <Action>(GotoFile)
 map <leader>e :NERDTree<CR>
 map <leader>t <Action>(ActivateTerminalToolWindow)
@@ -88,5 +93,3 @@ map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 
-" Hide open panels
-nmap <Leader>w :action HideAllWindows<CR>
