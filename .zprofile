@@ -1,3 +1,6 @@
+#Local variables
+NGROK_DOMAIN=iguana-smart-cowbird.ngrok-free.app
+
 alias c="clear"
 alias a="herd php artisan"
 alias art="herd php artisan"
@@ -31,6 +34,8 @@ alias gp="git push"
 alias gi="git init ."
 alias gpl="git pull"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias g="git"
+alias dtf="dotfiles"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -58,12 +63,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 # ngrok share
 function share()
 {
-  domain=iguana-smart-cowbird.ngrok-free.app
-
   if [[ $# -eq 0 ]]
     then
       currentFolder=${PWD##*/}
-      ngrok http "${currentFolder}".test:443 --host-header=rewrite --domain=${domain}
+      ngrok http "${currentFolder}".test:443 --host-header=rewrite --domain=${NGROK_DOMAIN}
       return
   fi
 
@@ -71,16 +74,44 @@ function share()
     then
       ngrok http "$1" --host-header=rewrite --domain="$2"
     else
-      ngrok http "$1" --host-header=rewrite --domain=${domain}
+      ngrok http "$1" --host-header=rewrite --domain=${NGROK_DOMAIN}
   fi
 }
 
 function sites() {
-  cd "/Users/felipeva/herd/$1"
+  cd "/Users/$USER/herd/$1"
 }
 
 function codes() {
-  cd "/Users/felipeva/codes/$1"
+  cd "/Users/$USER/codes/$1"
+}
+
+# Connecto to SSH servers selector
+function sshc() {
+  if [ -z "$1" ]; then
+    echo "Usage: sshc <server>"
+    echo "Available servers:"
+    echo "  prg"
+    echo "  prg-staging"
+    echo "  phoenix"
+    echo "  phoenix-staging"
+    return
+  fi
+
+  case $1 in
+    "prg")
+      ssh forge@34.237.70.161
+      ;;
+    "prg-staging")
+      ssh forge@52.205.169.54
+      ;;
+    "phoenix")
+      ssh forge@34.239.199.233
+      ;;
+    "phoenix-staging")
+      ssh forge@3.238.51.212
+      ;;
+  esac
 }
 
 eval "$(pyenv init -)"

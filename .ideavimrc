@@ -17,13 +17,10 @@ set which-key
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
-
-
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
 " Highlight copied text
 Plug 'machakann/vim-highlightedyank'
-" Commentary plugin
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'machakann/vim-highlightedyank'
@@ -44,42 +41,28 @@ map <leader>a <Action>(GotoAction)
 map <leader>q <Action>(Switcher)
 map <leader>i <Action>(ShowErrorDescription)
 map <leader>b <Action>(GotoDeclaration)
-map <leader><leader> <Action>(GotoFile)
+nmap <leader><leader> <Action>(GotoFile)
 map <leader>rr <Action>(RenameElement)
 map <leader>RR <Action>(Refactorings.QuickListPopupAction)
 map <leader>sw <Action>(SurroundWith)
-
-" Hide open panels
-nmap <Leader>w :action HideAllWindows<CR>
-
-map \b <Action>(ToggleLineBreakpoint)
-map <c-b> <Action>(ShowUsages)
-map <c-c> <Action>(GotoImplementation)
-
-
-" comment out
-map <leader>cl <Action>(CommentByLineComment)
-map <leader>cb <Action>(CommentByBlockComment)
-
-" disable arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-" zed config
+map <leader>e :NERDTree<CR>
 map <leader>ca <Action>(ShowIntentionActions)
 map <leader>. <Action>(ShowIntentionActions)
-map gh <Action>(ShowErrorDescription)
+
+" zed config
+map ga <Action>(ShowIntentionActions)
+map gh <Action>(ShowHoverInfo)
 map gi <Action>(GotoImplementation)
 map gt <Action>(GotoTypeDeclaration)
 map gr <Action>(FindUsages)
 map gD <Action>(ShowUsages)
 
-" 
-map <leader><leader> <Action>(GotoFile)
-map <leader>e :NERDTree<CR>
+" Mapping for windows
 map <leader>t <Action>(ActivateTerminalToolWindow)
+map <leader>gg <Action>(ActivateCommitToolWindow)
+
+" Hide open panels
+nmap <Leader>w :action HideAllWindows<CR>
 
 " Splitting Windows
 nmap <Leader>\ :vsplit<CR>
@@ -87,9 +70,23 @@ nmap <Leader>v :vsplit<CR>
 nmap <Leader>- :split<CR>
 nmap <Leader>h :split<CR>
 
+map \b <Action>(ToggleLineBreakpoint)
+map <c-b> <Action>(ShowUsages)
+map <c-c> <Action>(GotoImplementation)
+
+" comment out
+map <leader>cl <Action>(CommentByLineComment)
+map <leader>cb <Action>(CommentByBlockComment)
+
 " Quick window navigation
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
