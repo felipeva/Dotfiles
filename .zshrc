@@ -30,3 +30,11 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/felipeva/Library/Application Support/Herd/config/php/84/"
+
+. "$HOME/.cargo/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/felipeva/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/felipeva/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/felipeva/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/felipeva/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

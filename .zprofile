@@ -36,6 +36,7 @@ alias gpl="git pull"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias g="git"
 alias dtf="dotfiles"
+alias wb="webstorm"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -115,3 +116,7 @@ function sshc() {
 }
 
 eval "$(pyenv init -)"
+
+# Added by OrbStack: command-line tools and integration
+# Comment this line if you don't want it to be added again.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
