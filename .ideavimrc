@@ -8,12 +8,16 @@ let mapleader=" "
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
+set scrolloff=10
+set linenumber
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
 set relativenumber
 
 " Do incremental searching.
 set incsearch
-set which-key
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -24,30 +28,173 @@ map Q gq
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdtree'
-Plug 'easymotion/vim-easymotion'
 
-"" -- Easymotions
+" EasyMotion
+Plug 'easymotion/vim-easymotion'
+set notimeout
+
+" Which key settings
+set which-key
+let g:WhichKey_FontSize = 16
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+" Leader key description
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+
+" Folding
+let g:WhichKeyDesc_folding = "<leader>z Folding"
+let g:WhichKeyDesc_folding_collapse = "<leader>zc Collapse all regions"
+let g:WhichKeyDesc_folding_expand = "<leader>zo Expand all regions"
+
+" Git
+let g:WhichKeyDesc_git = "<leader>g Git operations"
+let g:WhichKeyDesc_git_checkin = "<leader>gc Check in project"
+let g:WhichKeyDesc_git_status = "<leader>gs Activate Version Control tool window"
+let g:WhichKeyDesc_git_branches = "<leader>gb Git branches"
+let g:WhichKeyDesc_git_commit = "<leader>gg Activate Commit tool window"
+
+" Navigation
+let g:WhichKeyDesc_find = "<leader>f Find and navigate"
+let g:WhichKeyDesc_find_file = "<leader>ff Go to file"
+let g:WhichKeyDesc_find_in_path = "<leader>fc Find in path"
+let g:WhichKeyDesc_recent_locations = "<leader>fl Recent locations"
+let g:WhichKeyDesc_recent_files = "<leader><leader> Recent files"
+
+" Searching
+let g:WhichKeyDesc_search = "<leader>s Search"
+let g:WhichKeyDesc_search_everywhere = "<leader>se Search everywhere"
+
+" File explorer
+let g:WhichKeyDesc_explorer = "<leader>e Open NERDTree"
+
+" Close tab
+let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
+
+" Go to action
+let g:WhichKeyDesc_goto_action = "<leader>a Go to action"
+
+" Refactoring
+let g:WhichKeyDesc_refactor = "<leader>r Refactoring"
+let g:WhichKeyDesc_rename = "<leader>rr Rename element"
+let g:WhichKeyDesc_refactor_menu = "<leader>rR Refactoring quick list"
+let g:WhichKeyDesc_reformat = "<leader>rc Reformat code"
+let g:WhichKeyDesc_optimize_imports = "<leader>ro Optimize imports"
+
+" Code actions
+let g:WhichKeyDesc_code_actions = "<leader>. Show intention actions"
+
+" Terminal
+let g:WhichKeyDesc_terminal = "<leader>t Activate terminal tool window"
+
+" Window management
+let g:WhichKeyDesc_window = "<leader>w Hide all windows"
+
+" Splitting windows
+let g:WhichKeyDesc_split = "<leader>\\ Split vertically"
+let g:WhichKeyDesc_split_vertical = "<leader>v Split vertically"
+let g:WhichKeyDesc_split_horizontal = "<leader>- Split horizontally"
+let g:WhichKeyDesc_split_horizontal_alt = "<leader>h Split horizontally"
+
+" Commenting
+let g:WhichKeyDesc_comment = "<leader>c Commenting"
+let g:WhichKeyDesc_comment_line = "<leader>cl Comment by line"
+let g:WhichKeyDesc_comment_block = "<leader>cb Comment by block"
+
+" EasyMotion
+let g:WhichKeyDesc_easymotion_word = "\\w EasyMotion word"
+let g:WhichKeyDesc_easymotion_search = "<leader>j EasyMotion search"
+
+" IdeaVim configuration
+let g:WhichKeyDesc_ideavim_edit = "\\e Edit IdeaVim config"
+let g:WhichKeyDesc_ideavim_reload = "\\E Reload IdeaVim config"
+
+" Other actions
+let g:WhichKeyDesc_reformat_code = "\\r Reformat code"
+let g:WhichKeyDesc_optimize_imports_alt = "\\o Optimize imports"
+
+" Code navigation (Zed-style)
+let g:WhichKeyDesc_goto = "g Go to"
+let g:WhichKeyDesc_goto_actions = "ga Show intention actions"
+let g:WhichKeyDesc_goto_hover = "gh Show hover info"
+let g:WhichKeyDesc_goto_implementation = "gi Go to implementation"
+let g:WhichKeyDesc_goto_type = "gt Go to type declaration"
+let g:WhichKeyDesc_goto_references = "gr Find usages"
+let g:WhichKeyDesc_goto_usages = "gu Show usages"
+let g:WhichKeyDesc_goto_declaration = "gd Go to declaration"
+
+" Method navigation
+let g:WhichKeyDesc_method_prev = "[[ Go to previous method"
+let g:WhichKeyDesc_method_next = "]] Go to next method"
+
+" NERDTree
+let g:WhichKeyDesc_nerdtree = "<C-n> Toggle NERDTree"
+
+" ----------------------------
+" --- Custom Keybindings -----
+" ----------------------------
+" Escape with jj
+inoremap jj <Esc>
+
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Folding
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+" Actions
+" map <leader>am <action>(ShowIntentionActions)
+" map <leader>as <action>(SearchEverywhere)
+
+" Jump around with easymotion
 map \w <Plug>(easymotion-w)
+map <leader>j <Plug>(easymotion-s)
 
 "" -- NERDTree
 map <c-n> :NERDTree<CR>
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Git windows
+map <leader>gc <Action>(CheckinProject)
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+map <leader>gb <Action>(Git.Branches)
+map <leader>gg <Action>(ActivateCommitToolWindow)
+
+
+" Reformat code and optimize imports
 map \r <Action>(ReformatCode)
 map \o <Action>(OptimizeImports)
-map <leader>f <Action>(GotoFile)
-map <leader>a <Action>(GotoAction)
-map <leader>q <Action>(Switcher)
-map <leader>i <Action>(ShowErrorDescription)
-map <leader>b <Action>(GotoDeclaration)
-nmap <leader><leader> <Action>(GotoFile)
-map <leader>rr <Action>(RenameElement)
-map <leader>RR <Action>(Refactorings.QuickListPopupAction)
-map <leader>sw <Action>(SurroundWith)
+
+" Navigation
+map <leader>ff <Action>(GotoFile)
+map <leader>fc <action>(FindInPath)
+map <leader>fl <action>(RecentLocations)
+map <leader><leader> <Action>(RecentFiles)
+
+" Searching
+map <leader>se <Action>(SearchEverywhere)
+
+" NERDTree
 map <leader>e :NERDTree<CR>
-map <leader>ca <Action>(ShowIntentionActions)
+
+" Close active tab
+map <leader>q <action>(CloseContent)
+
+" Go to action
+map <leader>a <Action>(GotoAction)
+
+" Refactoring
+map <leader>rr <Action>(RenameElement)
+map <leader>rR <Action>(Refactorings.QuickListPopupAction)
+map <leader>rc <Action>(ReformatCode)
+map <leader>ro <Action>(OptimizeImports)
+
+" Code actions
 map <leader>. <Action>(ShowIntentionActions)
 
 " zed config
@@ -56,11 +203,11 @@ map gh <Action>(ShowHoverInfo)
 map gi <Action>(GotoImplementation)
 map gt <Action>(GotoTypeDeclaration)
 map gr <Action>(FindUsages)
-map gD <Action>(ShowUsages)
+map gu <Action>(ShowUsages)
+map gd <Action>(GotoDeclaration)
 
 " Mapping for windows
 map <leader>t <Action>(ActivateTerminalToolWindow)
-map <leader>gg <Action>(ActivateCommitToolWindow)
 
 " Hide open panels
 nmap <Leader>w :action HideAllWindows<CR>
@@ -71,13 +218,13 @@ nmap <Leader>v :vsplit<CR>
 nmap <Leader>- :split<CR>
 nmap <Leader>h :split<CR>
 
-map \b <Action>(ToggleLineBreakpoint)
-map <c-b> <Action>(ShowUsages)
-map <c-c> <Action>(GotoImplementation)
-
 " comment out
 map <leader>cl <Action>(CommentByLineComment)
 map <leader>cb <Action>(CommentByBlockComment)
+
+" edit ideavim config
+nnoremap \e :e ~/.ideavimrc<CR>
+map \E <Action>(IdeaVim.ReloadVimRc.reload)
 
 " Quick window navigation
 map <C-J> <C-W>j

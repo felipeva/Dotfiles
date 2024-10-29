@@ -107,10 +107,10 @@ function sshc() {
       ssh forge@52.205.169.54
       ;;
     "phoenix")
-      ssh forge@34.239.199.233
+      ssh forge@phoenix.ocmi.io
       ;;
     "phoenix-staging")
-      ssh forge@3.238.51.212
+      ssh forge@phoenix-staging.ocmi.io
       ;;
   esac
 }
@@ -120,3 +120,4 @@ eval "$(pyenv init -)"
 # Added by OrbStack: command-line tools and integration
 # Comment this line if you don't want it to be added again.
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
