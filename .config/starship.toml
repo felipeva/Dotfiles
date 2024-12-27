@@ -1,0 +1,82 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$nodejs\
+$cmd_duration\
+$line_break\
+$character"""
+
+[username]
+style_user = "#9198A1"
+format = "[$user]($style) in"
+show_always = true
+
+[directory]
+style = "#9198A1"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[character]
+success_symbol = "[❯](#7ee787)"  # GitHub green
+error_symbol = "[❯](#ff7b72)"    # GitHub red
+vimcmd_symbol = "[❮](#7ee787)"   # GitHub green
+
+[git_branch]
+format = "on [$symbol$branch]($style)"
+style = "#ff7b72"  
+
+[git_status]
+format = ' [\[$all_status$ahead_behind\]]($style)'
+style = "#ff7b72"  
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = "?"
+stashed = "≡"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+ignore_submodules = false
+disabled = false
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "#8b949e"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "#d29922"  # GitHub yellow
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "#3572A5"  # Python's color
+symbol = "🐍 "
+
+[nodejs]
+format = '[ \[${symbol}($version)\]]($style)'
+style = "#7ee787"  # Node.js green
+symbol = "⬢ "
+
+[rust]
+format = '[ \[${symbol}($version)\]]($style)'
+style = "#dea584"  # Rust's color
+symbol = "🦀 "
+
+[deno]
+format = '[ \[${symbol}($version)\]]($style)'
+style = "#000000"  # Deno's color
+symbol = "🦕 "
+
+[php]
+format = '[ \[${symbol}($version)\]]($style)'
+style = "#4F5D95"  # PHP's color
+symbol = "🐘 "
+
