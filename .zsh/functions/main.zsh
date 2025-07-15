@@ -47,7 +47,7 @@ function sshc() {
       ssh forge@phoenix.ocmi.io
       ;;
     "phoenix-staging")
-      ssh forge@phoenix-staging.ocmi.io
+      ssh forge@https://jp.wym.services
       ;;
   esac
 }

@@ -56,13 +56,15 @@ let g:WhichKeyDesc_git_status = "<leader>gs Activate Version Control tool window
 let g:WhichKeyDesc_git_branches = "<leader>gb Git branches"
 let g:WhichKeyDesc_git_commit = "<leader>gg Activate Commit tool window"
 let g:WhichKeyDesc_git_push = "<leader>gp Push changes"
+let g:WhichKeyDesc_git_view = "<leader>gv View operations"
+let g:WhichKeyDesc_git_view_pull_requests = "<leader>gvp View pull requests"
 
 " Navigation
 let g:WhichKeyDesc_find = "<leader>f Find and navigate"
 let g:WhichKeyDesc_find_file = "<leader>ff Go to file"
 let g:WhichKeyDesc_find_in_path = "<leader>fc Find in path"
 let g:WhichKeyDesc_recent_locations = "<leader>fl Recent locations"
-let g:WhichKeyDesc_recent_files = "<leader><leader> Recent files"
+let g:WhichKeyDesc_recent_files = "<leader>fr Recent files"
 
 " Searching
 let g:WhichKeyDesc_search = "<leader>s Search"
@@ -208,6 +210,8 @@ map <leader>gs <Action>(ActivateVersionControlToolWindow)
 map <leader>gb <Action>(Git.Branches)
 map <leader>gg <Action>(ActivateCommitToolWindow)
 map <leader>gp <Action>(Vcs.Push)
+map <leader>gvp <Action>(Github.View.Pull.Request)
+map <leader>gf <Action>(Git.Fetch)
 
 
 " Reformat code and optimize imports
@@ -218,7 +222,7 @@ map \o <Action>(OptimizeImports)
 map <leader>ff <Action>(GotoFile)
 map <leader>fc <action>(FindInPath)
 map <leader>fl <action>(RecentLocations)
-map <leader><leader> <Action>(RecentFiles)
+map <leader>fr <Action>(RecentFiles)
 
 " Searching
 map <leader>se <Action>(SearchEverywhere)
@@ -244,6 +248,7 @@ map <leader>rr <Action>(RenameElement)
 map <leader>rR <Action>(Refactorings.QuickListPopupAction)
 map <leader>rc <Action>(ReformatCode)
 map <leader>ro <Action>(OptimizeImports)
+map <leader>rm <Action>(Move)
 
 " Code actions
 map <leader>. <Action>(ShowIntentionActions)
@@ -263,11 +268,17 @@ map <leader>t <Action>(ActivateTerminalToolWindow)
 " Hide open panels
 nmap <Leader>w :action HideAllWindows<CR>
 
+" View Optins
+" ViewStatusBar
+map <leader>vs <Action>(ViewStatusBar)
+map <leader>vt <Action>(ViewToolBar)
+map <leader>vn <Action>(ActivateNotificationsToolWindow)
+map <leader>vv <Action>(VimFindActionIdAction)
+map <leader>va <Action>(ViewToolButtons)
+
 " Splitting Windows
 nmap <Leader>\ :vsplit<CR>
-nmap <Leader>v :vsplit<CR>
 nmap <Leader>- :split<CR>
-nmap <Leader>h :split<CR>
 
 " comment out
 map <leader>cl <Action>(CommentByLineComment)

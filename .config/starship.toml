@@ -5,34 +5,44 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$nodejs\
 $cmd_duration\
 $line_break\
 $character"""
 
+palette = 'default'
+
+[palettes.default]
+foreground = '#ff7b72'
+mustard = '#8b949e'
+text = '#9198a1'
+sucess = '#7ee787'
+error = '#ff7b72'
+
 [username]
-style_user = "#9198A1"
+style_user = "text"
 format = "[$user]($style) in"
 show_always = true
 
 [directory]
-style = "#9198A1"
+style = "text"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [character]
-success_symbol = "[❯](#7ee787)"  # GitHub green
-error_symbol = "[❯](#ff7b72)"    # GitHub red
-vimcmd_symbol = "[❮](#7ee787)"   # GitHub green
+success_symbol = "[❯](sucess)"  # GitHub green
+error_symbol = "[❯](error)"    # GitHub red
+vimcmd_symbol = "[❮](#e3b341)"   # GitHub green
+
 
 [git_branch]
-format = "on [$symbol$branch]($style)"
+format = "on [$symbol$branch]($style) "
 style = "#ff7b72"  
 
 [git_status]
-format = ' [\[$all_status$ahead_behind\]]($style)'
+format = '([\[$all_status$ahead_behind\]]($style))'
 style = "#ff7b72"  
+disabled = false
 conflicted = "="
 ahead = "⇡${count}"
 behind = "⇣${count}"
@@ -45,15 +55,13 @@ staged = "+"
 renamed = "»"
 deleted = "✘"
 ignore_submodules = false
-disabled = false
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "#8b949e"
 
 [cmd_duration]
-format = "[$duration]($style) "
-style = "#d29922"  # GitHub yellow
+format = 'took [$duration](mustard) '
 
 [python]
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
@@ -79,4 +87,18 @@ symbol = "🦕 "
 format = '[ \[${symbol}($version)\]]($style)'
 style = "#4F5D95"  # PHP's color
 symbol = "🐘 "
+
+
+[custom.laravel]
+command = """
+awk -F'"' '/"laravel\\/framework"/ {
+    getline
+    getline
+    print $4
+}' composer.json 2>/dev/null
+"""
+when = '[[ -f "composer.json" ]] && grep -q "laravel/framework" composer.json'
+symbol = "🎵 "
+style = "red"
+format = '[\[$symbol($output)\]]($style) '
 
