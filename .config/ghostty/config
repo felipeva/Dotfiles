@@ -1,0 +1,49 @@
+# Theme
+theme = GitHub Dark
+
+# Window settings
+window-colorspace = display-p3
+window-padding-x = 15,15
+window-padding-y = 0,15
+
+font-family = "JetBrainsMono Nerd Font"
+window-title-font-family = "JetBrainsMono Nerd Font"
+
+font-size = 15
+
+# Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+
+background-blur-radius = 20
+background-opacity = 0.90
+macos-titlebar-style = tabs
+
+# Cursor style
+cursor-style-blink = true
+
+# Custom Palette
+palette = 0=#0d1117
+palette = 1=#ff7b72
+palette = 2=#3fb950
+palette = 3=#d29922
+palette = 4=#58a6ff
+palette = 5=#bc8cff
+palette = 6=#39c5cf 
+palette = 7=#b1bac4
+palette = 8=#484f58
+palette = 9=#ffa198
+palette = 10=#56d364
+palette = 11=#e3b341
+palette = 12=#79c0ff
+palette = 13=#d2a8ff
+palette = 14=#56d4dd
+palette = 15=#f0f6fc
+background = 000000
+foreground = f0f6fc
+cursor-color = c9d1d9
+selection-background = 1158c7
+selection-foreground = ffffff
+
+keybind = shift+enter=text:\n
+
